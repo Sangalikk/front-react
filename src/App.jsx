@@ -2,6 +2,7 @@
 // O visual pronto (com todas as classes) está em /prototipo/index.html —
 // abra http://localhost:5173/prototipo/ com o `npm run dev` rodando.
 
+import TaskList from "./components/TaskList";
 import { useTasks } from "./hooks/useTasks"
 
 export default function App() {
@@ -27,16 +28,7 @@ export default function App() {
           </div>
         )}
 
-        {status === 'success' && (
-          <ul className="task-list">
-            {tasks.map((task) => (
-              <li key={task.id} className="task">
-                <span />
-                <span className="task__body">{task.titulo}</span>
-              </li>
-            ))}
-          </ul>
-        )}
+        {status === 'success' &&(<TaskList tasks={tasks} />)}
 
       </section>
     </main>
