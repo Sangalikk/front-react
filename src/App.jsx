@@ -16,6 +16,7 @@ export default function App() {
     toggleTask,
     actionError,
     clearActionError,
+    editTask,
   } = useTasks();
 
   return (
@@ -59,7 +60,7 @@ export default function App() {
                 <p>Nenhuma tarefa cadastrada</p>
               </div>
             ) : (
-              <TaskList tasks={tasks} onToggle={toggleTask} />
+              <TaskList tasks={tasks} onToggle={toggleTask} onEdit={editTask} />
             )}
           </>
         )}

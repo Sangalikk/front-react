@@ -50,12 +50,19 @@ export function useTasks() {
         });
     };
 
+    const editTask = async (task, changes) => {
+        return run(async() => {
+            const updatedTask = await updateTask(task.id, changes);
+            setTasks((prevTasks) => prevTasks.map((t) => (t.id === task.id ? updatedTask : t)));
+        });
+    }
+
     const toggleTask = async (task) => {
-        run(async() => {
+        return run(async() => {
             const updatedTask = await updateTask(task.id, {concluida: !task.concluida});
             setTasks((prevTasks) => prevTasks.map((t) => (t.id === task.id ? updatedTask : t)));
         });
     };
 
-    return {tasks, status, loadError, reload, actionError, clearActionError: () => setActionError(null), addTask, toggleTask};
+    return {tasks, status, loadError, reload, actionError, clearActionError: () => setActionError(null), addTask, toggleTask, editTask};
 }
